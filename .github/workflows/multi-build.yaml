@@ -113,6 +113,7 @@ jobs:
           version: v0.17.0
           driver-opts: |
             network=host
+            image=moby/buildkit:v0.16.0
 
       - name: Print /run/systemd/resolve/resolv.conf
         run: |
