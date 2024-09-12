@@ -1,4 +1,4 @@
-name: Build Dockerfile with BuildKit and Host Network
+name: Build Dockerfile with BuildKit and Legacy Docker
 
 on:
   workflow_dispatch:
@@ -28,4 +28,10 @@ jobs:
     # Step 4: Build Dockerfile using Docker BuildKit with host network
     - name: Build Dockerfile using Docker BuildKit with host network
       run: |
-        docker build --network host -t print-resolv-conf .
+        docker build --network host -t print-resolv-conf-buildkit .
+
+    # Step 5: Build Dockerfile using Docker Legacy system with host network
+    - name: Build Dockerfile using Docker Legacy build with host network
+      run: |
+        export DOCKER_BUILDKIT=0 # Disable BuildKit to use Docker legacy build system
+        docker build --network host -t print-resolv-conf-legacy .
