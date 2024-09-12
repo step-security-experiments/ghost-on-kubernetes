@@ -115,6 +115,20 @@ jobs:
             network=host
             image=moby/buildkit:v0.16.0
 
+      - name: Get BuildKit container ID
+        id: get-buildkit-container
+        run: |
+          # Get the BuildKit container ID using the docker ps command
+          container_id=$(docker ps -qf "name=buildx_buildkit_${{ steps.buildx.outputs.name }}")
+          echo "BuildKit container ID: $container_id"
+          echo "::set-output name=container_id::$container_id"
+
+      - name: Print /etc/resolv.conf from BuildKit container
+        run: |
+          # Use the container ID to print the /etc/resolv.conf file
+          echo "Contents of /etc/resolv.conf in the BuildKit container:"
+          docker exec ${{ steps.get-buildkit-container.outputs.container_id }} cat /etc/resolv.conf
+
       - name: Print /run/systemd/resolve/resolv.conf
         run: |
           if [ -f /etc/resolv.conf ]; then
