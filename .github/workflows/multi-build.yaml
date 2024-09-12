@@ -112,7 +112,6 @@ jobs:
           buildkitd-flags: --debug
           version: v0.17.0
           driver-opts: |
-            network=host
             image=moby/buildkit:v0.16.0
 
       - name: Get BuildKit container ID
