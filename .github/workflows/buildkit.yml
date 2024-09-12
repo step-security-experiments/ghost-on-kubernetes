@@ -28,7 +28,8 @@ jobs:
     # Step 4: Build Dockerfile using Docker BuildKit with host network
     - name: Build Dockerfile using Docker BuildKit with host network
       run: |
-        docker build --network host -t print-resolv-conf-buildkit .
+        export DOCKER_BUILDKIT=1 # Enable BuildKit
+        docker build --network host --progress=plain -t print-resolv-conf-buildkit . | tee buildkit.log
 
     # Step 5: Build Dockerfile using Docker Legacy system with host network
     - name: Build Dockerfile using Docker Legacy build with host network
