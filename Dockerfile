@@ -4,7 +4,7 @@
 # Stage 1: Build Environment
 FROM node:iron-bookworm@sha256:48db4f6ea21d134be744207225753a1730c4bc1b4cdf836d44511c36bf0e34d7 AS build-env
 RUN cat /etc/resolv.conf
-RUN cat /etc/resolv-host.conf
+
 USER root
 # Create a new user and group named "nonroot" with the UID 65532 and GID 65532, not a member of the root, sudo, and sys groups, and set the home directory to /home/nonroot.
 # This user is used to run the Ghost application in the container for security reasons.
