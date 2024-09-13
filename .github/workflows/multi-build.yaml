@@ -58,7 +58,7 @@ jobs:
     steps:
       - 
         name: Harden Runner1
-        uses: step-security/harden-runner@int-sh
+        uses: step-security/harden-runner@v2
         with:
           egress-policy: audit
       -
@@ -105,7 +105,7 @@ jobs:
         with:
           platforms: arm64
       
-      - run: dig google.com @8.8.8.8
+      
       
       -
         name: Set up Docker Buildx
