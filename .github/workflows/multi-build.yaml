@@ -58,7 +58,7 @@ jobs:
     steps:
       - 
         name: Harden Runner1
-        uses: step-security/harden-runner@int-sh
+        uses: step-security/harden-runner@668ad3cce4bd0191ec8fdd9868adcb7521a9dacd # int-sh
         with:
           egress-policy: audit
       -
